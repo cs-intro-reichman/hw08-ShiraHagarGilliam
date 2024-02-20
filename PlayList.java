@@ -97,6 +97,9 @@ class PlayList {
         if(size >= maxSize) {
             return false;
         }
+        // you could do all of this in 1 if
+        // if( i < 0 || i > size || size >= maxSize) {return false;}
+        
         size++;
         for(int j = size - 1; j > i; j--) {
             tracks[j] = tracks[j - 1];
@@ -118,6 +121,7 @@ class PlayList {
         if(i > size) {
             return;
         }
+        // same here, one if
         tracks[i] = null;
         for(int j = i; j < size; j++) {
             tracks[j] = tracks[j + 1];
@@ -147,6 +151,8 @@ class PlayList {
      *  If the total size of both lists is too large, does nothing. */
     //// An elegant and terribly inefficient implementation.
      public void add(PlayList other) {
+         // We usually dont like to put all the function code inside an if,
+         // we go on negation, if not the condition theמ return, otherwise, the code of the function
         if (this.size + other.size <= maxSize) {
             for(int i = 0; i < other.size; i++) {
                 this.add(other.tracks[i]);
@@ -169,6 +175,7 @@ class PlayList {
         if(start > this.size -1) {
             return -1;
         }
+        // one if
         for(int i = start; i < this.size; i++) {
             if (minDuration > tracks[i].getDuration()) {
                 minDuration = tracks[i].getDuration();
